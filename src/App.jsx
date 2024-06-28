@@ -10,7 +10,7 @@ import Admin from "./pages/admin/Admin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(sessionStorage.getItem("dark") || false);
   return (
     <div className={dark ? "dark" : ""}>
       <Navbar dark={dark} setDark={setDark} />

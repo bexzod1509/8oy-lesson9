@@ -6,6 +6,7 @@ import person from "../../assets/Person.png";
 import shop from "../../assets/Shopping Cart.png";
 import { NavLink } from "react-router-dom";
 function Navbar({ dark, setDark }) {
+  sessionStorage.setItem("dark", dark);
   return (
     <>
       <header>
