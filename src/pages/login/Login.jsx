@@ -4,12 +4,20 @@ import { useNavigate } from "react-router-dom";
 import { useSignInMutation } from "../../context/api/userApi";
 import { setToken, setUser } from "../../context/slices/authSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 const initial = {
   UserName: "john32",
   password: "12345678",
 };
 function Login() {
-  const [signIn, { data, isLoading, isSuccess }] = useSignInMutation();
+  const [signIn, { data, isLoading, isSuccess, isError }] = useSignInMutation();
+  useEffect(() => {
+    if (isError) {
+      localStorage.removeItem("x-auth-token");
+      navigate("/");
+      toast.error("Username or Password wrong");
+    }
+  }, [isError]);
   const [formData, setFormData] = useState(initial);
   const dispatch = useDispatch();
   let navigate = useNavigate();
