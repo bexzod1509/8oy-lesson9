@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import rate from "../../assets/Frame 5.svg";
-import { useGetProductsQuery } from "../../context/productApi";
+import { useGetProductsQuery } from "../../context/api/productApi";
 import { Pagination } from "@mui/material";
 function Products() {
   const [page, setPage] = useState(sessionStorage.getItem("page") || 1);
